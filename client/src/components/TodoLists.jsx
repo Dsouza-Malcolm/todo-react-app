@@ -16,9 +16,8 @@ function TodoLists({ id, todo, taskComplete, updateTodo, deleteTodo }) {
     setEditing(false);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = () => {
     deleteTodo(id);
-    console.log("handleDelete : ", id);
   };
 
   return (
@@ -36,13 +35,13 @@ function TodoLists({ id, todo, taskComplete, updateTodo, deleteTodo }) {
         >
           <div className="relative">
             <h3 className="text-xl font-semibold text-center">{todo.title}</h3>
-            <DeleteBtn handleDelete={handleDelete} id={id} />
+            <DeleteBtn handleDelete={handleDelete} />
           </div>
           <hr />
           <p className="">{todo.description}</p>
           <div className="flex flex-col gap-y-3">
             <p className="text-sm font-medium text-gray-700">
-              Due Date : {todo.dueDate}
+              Due Date: {todo.dueDate}
             </p>
           </div>
           <div className="flex justify-between items-end gap-x-6">

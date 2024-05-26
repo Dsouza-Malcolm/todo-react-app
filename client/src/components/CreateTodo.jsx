@@ -69,6 +69,7 @@ function CreateTodo({
         <InputBox
           type={"date"}
           onChange={(e) => setDueDate(e.target.value)}
+          value={dueDate}
           min={dueDateMin}
           label={"Due Date"}
         />
