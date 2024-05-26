@@ -11,10 +11,11 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [taskId, setTaskId] = useState("");
 
-  useEffect(() => {
-    console.log(todos);
-    console.log(taskId);
-  }, [todos, taskId]);
+  // For Debugging and to check how task data is stored
+  // useEffect(() => {
+  //   console.log(todos);
+  //   console.log(taskId);
+  // }, [todos, taskId]);
 
   const fetchTaskById = async (taskId) => {
     if (taskId === "") {
