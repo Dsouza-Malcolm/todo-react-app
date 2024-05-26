@@ -1,14 +1,38 @@
-TODO List React App
+<h1>**TODO List React App**</h1>
 
-Steps for Local Development Setup
+## Steps for Local Development Setup
 
-1. Set Up Server
-Navigate to the server directory: cd server
-Install dependencies: npm install
-Start the server: npm start
+### 1. Set Up Server
 
-2. Set Up Client
-Navigate to the client directory: cd client
-Serve the built client: serve -s build
+1. Open a new VS Code terminal.
+2. Navigate to the server directory:
+    ```sh
+    cd server
+    ```
+3. Install dependencies:
+    ```sh
+    npm install
+    ```
+4. Start the server:
+    ```sh
+    npm start
+    ```
 
-Note: Ensure the server is running before serving the client.
+### 2. Set Up Client
+
+1. Open another new VS Code terminal.
+2. Navigate to the client directory:
+    ```sh
+    cd client
+    ```
+3. Install dependencies:
+    ```sh
+    npm install
+    ```
+4. Start the app:
+    ```sh
+    npm start
+    ```
+
+### Note
+Ensure the server is running before starting the client.
