@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import CompleteBtn from "./CompleteBtn";
 import EditBtn from "./EditBtn";
 import CreateTodo from "./CreateTodo";
+import DeleteBtn from "./DeleteBtn";
 
-function TodoLists({ id, todo, taskComplete, updateTodo }) {
+function TodoLists({ id, todo, taskComplete, updateTodo, deleteTodo }) {
   const [editing, setEditing] = useState(false);
 
   const handleEdit = function () {
@@ -13,6 +14,11 @@ function TodoLists({ id, todo, taskComplete, updateTodo }) {
   const handleSave = (updatedTask) => {
     updateTodo(id, updatedTask);
     setEditing(false);
+  };
+
+  const handleDelete = (id) => {
+    deleteTodo(id);
+    console.log("handleDelete : ", id);
   };
 
   return (
@@ -28,7 +34,10 @@ function TodoLists({ id, todo, taskComplete, updateTodo }) {
           className="bg-slate-100 rounded-lg p-5 flex flex-col gap-y-5"
           key={id}
         >
-          <h3 className="text-xl font-semibold text-center">{todo.title}</h3>
+          <div className="relative">
+            <h3 className="text-xl font-semibold text-center">{todo.title}</h3>
+            <DeleteBtn handleDelete={handleDelete} id={id} />
+          </div>
           <hr />
           <p className="">{todo.description}</p>
           <div className="flex flex-col gap-y-3">

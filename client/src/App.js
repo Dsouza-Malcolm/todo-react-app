@@ -10,6 +10,10 @@ import NavBar from "./components/NavBar";
 function App() {
   const [todos, setTodos] = useState([]);
 
+  useEffect(() => {
+    console.log(todos);
+  }, [todos]);
+
   const addTodo = function (task) {
     axios
       .post("http://localhost:5000/task", { task })
@@ -20,10 +24,6 @@ function App() {
         console.error("Error adding todo:", error);
       });
   };
-
-  useEffect(() => {
-    console.log(todos);
-  }, [todos]);
 
   const taskComplete = async (id) => {
     setTodos((prevTodos) =>
@@ -46,6 +46,16 @@ function App() {
     }, 2000);
   };
 
+  const deleteTodo = async function (id) {
+    console.log("deleteTodo : ", id);
+    try {
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+      await axios.delete(`http://localhost:5000/task/${id}`);
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
+  };
+
   const updateTodo = function (id, updatedTask) {
     axios
       .put(`http://localhost:5000/task/${id}`, { task: updatedTask })
@@ -61,7 +71,6 @@ function App() {
       });
   };
 
-  // editTodo={editTodo}
   return (
     <div className="container m-auto">
       <NavBar />
@@ -75,14 +84,11 @@ function App() {
                 todo={todo.task}
                 taskComplete={taskComplete}
                 updateTodo={updateTodo}
+                deleteTodo={deleteTodo}
               />
             );
           })}
           <CreateTodo addTodo={addTodo} />
-          {/* <CreateTodo addTodo={addTodo} />
-          <CreateTodo addTodo={addTodo} />
-          <CreateTodo addTodo={addTodo} />
-          <CreateTodo addTodo={addTodo} /> */}
         </div>
       </section>
     </div>
