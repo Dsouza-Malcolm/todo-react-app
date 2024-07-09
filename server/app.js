@@ -53,7 +53,6 @@ app.post("/task", (req, res) => {
   };
 
   TODOS.push(newTask);
-  console.log(TODOS);
 
   res.status(201).json(newTask);
 });
@@ -61,7 +60,6 @@ app.post("/task", (req, res) => {
 app.delete("/task/:id", (req, res) => {
   const id = parseInt(req.params.id);
   TODOS = TODOS.filter((todo) => todo.id !== id);
-  console.log(TODOS);
 
   res.status(200).json({ message: "Completed tasks deleted successfully" });
 });
